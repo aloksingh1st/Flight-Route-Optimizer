@@ -91,15 +91,17 @@ function Form({ isModalOpen, setIsModalOpen }: any) {
   );
 
   return (
-  <>      {/* Modal Overlay */}
+    <>
+      {" "}
+      {/* Modal Overlay */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 animate-in fade-in duration-200">
           <div className="bg-white rounded-2xl shadow-2xl border border-slate-200/50 w-full max-w-2xl max-h-[90vh] overflow-hidden animate-in zoom-in-95 duration-200">
             {/* Modal Header */}
             <div className="bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-6 text-white flex items-center justify-between">
               <div>
-                <h2 className="text-2xl font-bold mb-1">Travel Booking Form</h2>
-                <p className="text-blue-100">Plan your perfect journey</p>
+                <h2 className="text-2xl font-bold mb-1">Simulate the Route</h2>
+                <p className="text-blue-100">Plan the perfect route</p>
               </div>
               <button
                 onClick={closeModal}
@@ -114,9 +116,7 @@ function Form({ isModalOpen, setIsModalOpen }: any) {
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Service Selection */}
                 <div className="space-y-3">
-                  <label className="block text-sm font-semibold text-slate-700">
-                    Select Service Type *
-                  </label>
+                 
                   <div className="relative">
                     <select
                       value={selectedOption}
@@ -125,7 +125,7 @@ function Form({ isModalOpen, setIsModalOpen }: any) {
                         errors.service ? "border-red-300" : "border-slate-200"
                       }`}
                     >
-                      <option value="">Choose your travel service</option>
+                      <option value="">Choose Starting Airport</option>
                       {airports.map((option) => (
                         <option key={option.id} value={option.id}>
                           {option.name}
@@ -187,15 +187,24 @@ function Form({ isModalOpen, setIsModalOpen }: any) {
                             </span>
                           </div>
 
-                          <input
-                            type="text"
+                          <select
                             value={destination.name}
                             onChange={(e) =>
                               updateDestination(destination.id, e.target.value)
                             }
-                            placeholder="Enter destination city or location"
-                            className="flex-1 px-3 py-2 border-2 border-slate-200 rounded-lg bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-100 focus:outline-none transition-all duration-200 hover:border-slate-300"
-                          />
+                            className={`flex-1 px-3 py-2 border-2 border-slate-200 rounded-lg bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-100 focus:outline-none transition-all duration-200 hover:border-slate-300 ${
+                              errors.service
+                                ? "border-red-300"
+                                : "border-slate-200"
+                            }`}
+                          >
+                            <option value="">Choose Airport</option>
+                            {airports.map((option) => (
+                              <option key={option.id} value={option.id}>
+                                {option.name}
+                              </option>
+                            ))}
+                          </select>
 
                           {destinations.length > 1 && (
                             <button

@@ -27,7 +27,6 @@ const Globe: React.FC = () => {
   return (
     <>
       <div style={{ width: "100vw", height: "90vh" }}>
-
         {/* Cesium Viewer */}
         <Viewer
           full
@@ -35,9 +34,9 @@ const Globe: React.FC = () => {
           baseLayerPicker={false}
           geocoder={false}
           timeline={false}
-        //   animation={false}
-        //   fullscreenButton={false}
-         creditContainer={document.createElement("div")}
+          //   animation={false}
+          //   fullscreenButton={false}
+          creditContainer={document.createElement("div")}
         >
           {/* Airport markers */}
           <AirportMarkers fromAirport={fromAirport} toAirport={toAirport} />
@@ -80,20 +79,21 @@ const Globe: React.FC = () => {
       {/* Floating button to open booking form */}
       <button
         onClick={() => setIsModalOpen(true)}
-        className="absolute bottom-6 right-6 bg-gradient-to-r from-blue-600 to-indigo-600 
-                   hover:from-blue-700 hover:to-indigo-700 text-white font-bold 
-                   py-3 px-6 rounded-xl transition-all duration-200 
-                   hover:scale-105 hover:shadow-lg"
+        className="fixed bottom-8 right-8 
+             bg-gradient-to-r from-blue-600 to-indigo-600 
+             hover:from-blue-700 hover:to-indigo-700 
+             text-white font-bold py-4 px-8 rounded-full 
+             transition-all duration-300 
+             hover:scale-105 hover:shadow-2xl 
+             shadow-lg shadow-indigo-400/50 z-50"
       >
-        Start Booking
+        Start Simulating
       </button>
 
       {/* Booking modal form */}
       <Form
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
-        // fromAirport={fromAirport}
-        // toAirport={toAirport}
       />
     </>
   );
