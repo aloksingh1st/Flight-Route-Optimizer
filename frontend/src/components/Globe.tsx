@@ -27,28 +27,6 @@ const Globe: React.FC = () => {
   return (
     <>
       <div style={{ width: "100vw", height: "90vh" }}>
-        {/* Airport selection UI */}
-        <div style={{ position: "absolute", zIndex: 1, padding: "10px" }}>
-          <select onChange={handleFromChange} value={fromAirport || ""}>
-            <option value="">From</option>
-            {airports.map((a) => (
-              <option key={a.id} value={a.iata}>
-                {a.name} ({a.iata})
-              </option>
-            ))}
-          </select>
-
-          <select onChange={handleToChange} value={toAirport || ""}>
-            <option value="">To</option>
-            {airports
-              .filter((a) => a.iata !== fromAirport) // avoid same selection
-              .map((a) => (
-                <option key={a.id} value={a.iata}>
-                  {a.name} ({a.iata})
-                </option>
-              ))}
-          </select>
-        </div>
 
         {/* Cesium Viewer */}
         <Viewer
